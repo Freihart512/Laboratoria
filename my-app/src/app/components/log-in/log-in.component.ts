@@ -23,7 +23,7 @@ export class LogInComponent implements OnInit {
     valid.then((data)=> {
       const emailValid = `${data.user.email}`
       if(emailValid.indexOf('m') === 0){
-        console.log('HOLA SOY')
+        console.log('HOLA SOY MESERA')
       }
     })
     .catch((err)=> console.log(err))
