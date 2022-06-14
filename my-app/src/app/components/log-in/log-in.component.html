@@ -3,13 +3,13 @@
         <img src="#">
         <h1>Burguer Queen</h1>
     </div>
-    <form>
+    <form (ngSubmit)="submitDataUser()" [formGroup]="dataUser">
         <div class="containerInputs">
             <label for="email">Email:</label>
-            <input id="email" class="inputLogin"type="text">
+            <input id="email" class="inputLogin"type="text" formControlName="email">
             <label for="password">Contraseña:</label>
-            <input id="password" class="inputLogin" type="password">
-            <a class="button" routerLink="/take-orders">Ingresar</a>
+            <input id="password" class="inputLogin" type="password" formControlName="password">
+            <button type="submit">Ingresar</button>
         </div>
     </form>
 </section>
