@@ -14,13 +14,18 @@ import { provideDatabase,getDatabase } from '@angular/fire/database';
 import { provideFirestore,getFirestore } from '@angular/fire/firestore';
 import { provideFunctions,getFunctions } from '@angular/fire/functions';
 import { provideStorage,getStorage } from '@angular/fire/storage';
+<<<<<<< HEAD
 import { ReactiveFormsModule } from '@angular/forms';
+=======
+import { ChefViewComponent } from './components/chef-view/chef-view.component';
+>>>>>>> cf509547301cccb3a7a1f9d36bef5a8969b5db8c
 
 @NgModule({
   declarations: [
     AppComponent,
     LogInComponent,
-    TakeOrdersComponent
+    TakeOrdersComponent,
+    ChefViewComponent
   ],
   imports: [
     BrowserModule,

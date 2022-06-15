@@ -8,8 +8,12 @@
             <label for="email">Email:</label>
             <input id="email" class="inputLogin"type="text">
             <label for="password">Contraseña:</label>
-            <input id="password" class="inputLogin" type="password">
-            <a class="button" routerLink="/take-orders">Ingresar</a>
+            <input id="password" class="inputLogin" type="password" formControlName="password">
+            <select formControlName="role">
+                <option> Meserx </option>
+                <option> Cocinerx </option>
+            </select>
+            <button type="submit">Ingresar</button>
         </div>
     </form>
 </section>

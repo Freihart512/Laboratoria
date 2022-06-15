@@ -1,5 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import { FormBuilder, FormGroup, Validators } from '@angular/forms'
+import { Router } from '@angular/router';
 import{FirebaseService} from '../../services-firebase/firebase.service'
 
 @Component({
@@ -9,28 +10,32 @@ import{FirebaseService} from '../../services-firebase/firebase.service'
 })
 export class LogInComponent implements OnInit {
   dataUser:FormGroup;
-  constructor( private formBuil : FormBuilder , private fireValid : FirebaseService) {
+  constructor( private formBuil : FormBuilder , private fireValid : FirebaseService, private newRoute: Router) {
     this.dataUser = this.formBuil.group({
       email: ['', Validators.required],
-      password : ['', Validators.required]
+      password : ['', Validators.required],
+      role : ['' , Validators.required]
     })
-    console.log(this.dataUser)
   }
   submitDataUser(){
     const emailUser = this.dataUser.value.email
     const passwordUser = this.dataUser.value.password
-    const valid = this.fireValid.login(emailUser, passwordUser)
-    valid.then((data)=> {
-      const emailValid = `${data.user.email}`
-      if(emailValid.indexOf('m') === 0){
-        console.log('HOLA SOY MESERA')
+    const role = this.dataUser.value.role
+    const validUser = this.fireValid.login(emailUser, passwordUser)
+    validUser.then((data)=> {
+      const userWorker = {
+        email: emailUser,
+        id: data.user.uid,
+        role: role
+      }
+      if(userWorker.role === 'Meserx'){
+        this.newRoute.navigate(['/take-orders'])
+      } else {
+        this.newRoute.navigate(['/chef-view'])
       }
     })
     .catch((err)=> console.log(err))
-    this.dataUser.reset()
   }
-  
-  
   ngOnInit(): void {
   }
 }
