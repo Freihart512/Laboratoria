@@ -1,0 +1,19 @@
+<section class="logInSection">
+    <div class="containerHeader">
+        <img src="#">
+        <h1>Burguer Queen</h1>
+    </div>
+    <form (ngSubmit)="submitDataUser()" [formGroup]="dataUser">
+        <div class="containerInputs">
+            <label for="email">Email:</label>
+            <input id="email" class="inputLogin"type="text" formControlName="email">
+            <label for="password">Contraseña:</label>
+            <input id="password" class="inputLogin" type="password" formControlName="password">
+            <select formControlName="role">
+                <option> Meserx </option>
+                <option> Cocinerx </option>
+            </select>
+            <button type="submit">Ingresar</button>
+        </div>
+    </form>
+</section>
