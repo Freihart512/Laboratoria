@@ -1,5 +1,5 @@
 import { Injectable } from '@angular/core';
-import { collection, Firestore, addDoc, doc, getDoc, onSnapshot,query} from '@angular/fire/firestore';
+import { collection, Firestore, addDoc, getDoc,doc, onSnapshot} from '@angular/fire/firestore';
 import { Observable } from 'rxjs';
 
 @Injectable({
@@ -16,10 +16,9 @@ export class FirestoreService {
     id: id,
     role: role
     })
-    
    }
-
-   getUserCollection(callback: string){
-
+   getUserData(id: string){
+    return getDoc(doc(this.firestore, 'chefs', id))
+    .then((e)=> e.data())
    }
 }

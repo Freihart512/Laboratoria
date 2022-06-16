@@ -2,6 +2,7 @@ import { Component, OnInit } from '@angular/core';
 import { FormBuilder, FormGroup, Validators } from '@angular/forms'
 import { Router } from '@angular/router';
 import{FirebaseService} from '../../services-firebase/firebase.service'
+import{FirestoreService} from '../../services-firestore/firestore.service'
 
 @Component({
   selector: 'app-log-in',
@@ -10,7 +11,7 @@ import{FirebaseService} from '../../services-firebase/firebase.service'
 })
 export class LogInComponent implements OnInit {
   dataUser:FormGroup;
-  constructor( private formBuil : FormBuilder , private fireValid : FirebaseService, private newRoute: Router) {
+  constructor( private formBuil : FormBuilder , private fireValid : FirebaseService, private newRoute: Router, private firestore: FirestoreService) {
     this.dataUser = this.formBuil.group({
       email: ['', Validators.required],
       password : ['', Validators.required],
@@ -18,18 +19,22 @@ export class LogInComponent implements OnInit {
     })
   }
   submit(){
-    const validUser = this.fireValid.login(this.dataUser.value.email, this.dataUser.value.password)
-    validUser.then((data)=> {
-      const userWorker = {
-        email: this.dataUser.value.email,
-        id: data.user.uid,
-        role: this.dataUser.value.role
-      }
-      if(userWorker.role === 'Meserx'){
-        this.newRoute.navigate(['/take-orders'])
-      } else if(userWorker.role=== 'Cocinerx'){
-        this.newRoute.navigate(['/chef-view'])
-      }
+  this.fireValid.login(this.dataUser.value.email, this.dataUser.value.password)
+    .then((data)=> {
+      this.firestore.addUser(this.dataUser.value.email, data.user.uid, this.dataUser.value.role)
+      .then((result)=>{ 
+        this.firestore.getUserData(result.id)
+        .then((doc)=>{
+          if(doc['id']=== data.user.uid){
+            console.log('SOY YO')
+          }
+        })
+      })
+      // if(userWorker.role === 'Meserx'){
+      //   this.newRoute.navigate(['/take-orders'])
+      // } else if(userWorker.role=== 'Cocinerx'){
+      //   this.newRoute.navigate(['/chef-view'])
+      // }
     })
     .catch((err)=> console.log(err))
   }
