@@ -17,20 +17,17 @@ export class LogInComponent implements OnInit {
       role : ['' , Validators.required]
     })
   }
-  submitDataUser(){
-    const emailUser = this.dataUser.value.email
-    const passwordUser = this.dataUser.value.password
-    const role = this.dataUser.value.role
-    const validUser = this.fireValid.login(emailUser, passwordUser)
+  submit(){
+    const validUser = this.fireValid.login(this.dataUser.value.email, this.dataUser.value.password)
     validUser.then((data)=> {
       const userWorker = {
-        email: emailUser,
+        email: this.dataUser.value.email,
         id: data.user.uid,
-        role: role
+        role: this.dataUser.value.role
       }
       if(userWorker.role === 'Meserx'){
         this.newRoute.navigate(['/take-orders'])
-      } else {
+      } else if(userWorker.role=== 'Cocinerx'){
         this.newRoute.navigate(['/chef-view'])
       }
     })
