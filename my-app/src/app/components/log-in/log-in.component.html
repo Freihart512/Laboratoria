@@ -8,17 +8,19 @@
                 <img src="./../../../assets/img/burgerLogo.png">
                 <h1>CiCy's Burger</h1>
             </div>
-            <form (ngSubmit)="submit()" [formGroup]="dataUser">
+            <form (ngSubmit)="validate()" [formGroup]="dataUser">
                 <div class="containerInputs">
                     <label for="email">Email:</label>
                     <input id="email" class="inputLogin"type="text" formControlName="email">
                     <label for="password">Contraseña:</label>
                     <input id="password" class="inputLogin" type="password" formControlName="password">
+                    <span></span>
                     <label for="selectRole"> Selecciona tu rol:</label>
                     <select id="selectRole" formControlName="role">
                         <option selected> Meserx </option>
                         <option> Cocinerx </option>
                     </select>
+                    <span></span>
                     <button type="submit">Ingresar</button>
                 </div>
             </form>

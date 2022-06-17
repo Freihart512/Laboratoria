@@ -24,8 +24,9 @@
 .containerFirstImg{
     grid-area: img;
     background-image: url(./../../../assets/img/imgLogIn.png);
-    background-size: 210%;
     background-repeat: no-repeat;
+    background-position: center center;
+    background-size: cover;
 }
 .containerHeader img{
     margin: 0px 0px 0px 35px;
@@ -64,3 +65,11 @@ option{
     color: black;
     font-family: 'Poppins', sans-serif;
 }
+
+@media (min-width: 1024px){
+    button, select, input{
+        height:50px;
+        width: 344px;
+        font-size: 22px;
+    }
+ }
