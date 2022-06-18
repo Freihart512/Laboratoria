@@ -17,8 +17,8 @@ export class FirestoreService {
   //   role: role
   //   })
   //  }
-   getUserData(id: string, nameCollection: string){
-    return getDoc(doc(this.firestore, nameCollection , id))
-    .then((e)=> e.data())
+   async getUserData(id: string, nameCollection: string){
+    const e = await getDoc(doc(this.firestore, nameCollection, id));
+     return e.data();
    }
 }
