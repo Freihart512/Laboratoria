@@ -1,7 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import { FormBuilder, FormGroup, Validators } from '@angular/forms'
 import { Router } from '@angular/router';
-import{FirebaseService} from '../../services-firebase/firebase.service'
+import {FirebaseService} from '../../services-firebase/firebase.service'
 
 @Component({
   selector: 'app-log-in',

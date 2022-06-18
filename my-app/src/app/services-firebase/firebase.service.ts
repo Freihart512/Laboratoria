@@ -11,3 +11,4 @@ export class FirebaseService {
     return signInWithEmailAndPassword(this.auth, email, password);
   }
 }
+
