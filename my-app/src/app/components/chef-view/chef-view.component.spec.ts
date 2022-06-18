@@ -1,6 +1,6 @@
 import { ComponentFixture, TestBed } from '@angular/core/testing';
 
-import { ChefViewComponent } from './chef-view.component';
+import { ChefViewComponent } from '../../components/chef-view/chef-view.component';
 
 describe('ChefViewComponent', () => {
   let component: ChefViewComponent;
