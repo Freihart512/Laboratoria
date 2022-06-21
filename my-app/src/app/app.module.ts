@@ -25,13 +25,17 @@ import { provideStorage,getStorage } from '@angular/fire/storage';
 import { ChefViewComponent } from './components/chef-view/chef-view.component';
 import { FontAwesomeModule } from '@fortawesome/angular-fontawesome';
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
+import { FoodListComponent } from './components/food-list/food-list.component';
+import { OrderListComponent } from './components/order-list/order-list.component';
 
 @NgModule({
   declarations: [
     AppComponent,
     LogInComponent,
     TakeOrdersComponent,
-    ChefViewComponent
+    ChefViewComponent,
+    FoodListComponent,
+    OrderListComponent
   ],
   imports: [
     BrowserModule,
