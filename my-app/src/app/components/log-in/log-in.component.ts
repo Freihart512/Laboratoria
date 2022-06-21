@@ -1,5 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import { FormBuilder, FormGroup, Validators } from '@angular/forms';
+import { MatSnackBar } from '@angular/material/snack-bar';
 import { Router } from '@angular/router';
 import{FirebaseService} from '../../services/services-firebase/firebase.service'
 import{FirestoreService} from '../../services/services-firestore/firestore.service'
@@ -15,6 +16,7 @@ export class LogInComponent implements OnInit {
     private firebase : FirebaseService,
     private newRoute: Router,
     private firestore: FirestoreService,
+    private snackBar: MatSnackBar
     ) {
     this.dataUser = this.formBuil.group({
       email: ['', Validators.required, Validators.email],
@@ -33,7 +35,16 @@ export class LogInComponent implements OnInit {
                 this.newRoute.navigate(['/chef-view'])
               }
             })
+    }).catch(()=>{
+      this.errRol()
     })
+  }
+  errRol(){
+    this.snackBar.open('Contraseña o correo incorrecto. Ingresar nuevamente', 'Aceptar',{
+      duration: 5000,
+      horizontalPosition: 'center',
+      verticalPosition: 'top'
+    } )
   }
   ngOnInit(): void {
   }
