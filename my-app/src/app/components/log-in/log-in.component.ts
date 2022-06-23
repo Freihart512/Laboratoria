@@ -31,14 +31,14 @@ export class LogInComponent implements OnInit {
     .then((data)=>{
       this.firestore.getUserRole(data.user.uid)
         .then((docResult) => {
-          if (docResult['role'] === 'waiter') {
+          if (docResult['role'] === 'waiter'){
             this.newRoute.navigate(['/take-orders']);
           } else if (docResult['role'] === 'chef') {
             this.newRoute.navigate(['/chef-view']);
           }
-        }).catch(()=>{
-          this.errRol();
         })
+    }).catch(()=>{
+      this.errRol();
     })
     
   }

@@ -50,8 +50,5 @@ describe('LogInComponent', () => {
     expect(component.dataUser.invalid).toBeFalse();
   });
   //Validar botón
-  //Validar si logIn recibe los parametros adecuados
-//   it('Debe LogIn recibir los argumentos correctos', () => {
-// expect(component.submit).()
-// })
+
 });
