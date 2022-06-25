@@ -27,10 +27,14 @@ export class LogInComponent implements OnInit {
     }
 
   submit(){
-    this.firebase.login(this.dataUser.value.email, this.dataUser.value.password)
+    console.log('ESTOY ADENTROOOOOOO')
+    return this.firebase.login(this.dataUser.value.email, this.dataUser.value.password)
     .then((data)=>{
+      console.log('PROMESA RESUELTAAAAA')
+      console.log(data)
       this.firestore.getUserRole(data.user.uid)
         .then((docResult) => {
+          console.log('ENTRANDO A SEGUNDA PROMESA')
           if (docResult['role'] === 'waiter'){
             this.newRoute.navigate(['/take-orders']);
           } else if (docResult['role'] === 'chef') {

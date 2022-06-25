@@ -1,4 +1,4 @@
-import { ComponentFixture, TestBed } from '@angular/core/testing';
+import { ComponentFixture, TestBed, waitForAsync } from '@angular/core/testing';
 import {FormsModule, ReactiveFormsModule } from '@angular/forms';
 import {RouterTestingModule} from '@angular/router/testing';
 import { FirebaseService } from 'src/app/services/services-firebase/firebase.service';
@@ -8,6 +8,11 @@ import { FirebaseServiceMock } from 'src/app/__mocks__/firebase.service.mock';
 import { MatSnackBarModule} from '@angular/material/snack-bar';
 
 import { LogInComponent } from '../../components/log-in/log-in.component';
+import { By } from '@angular/platform-browser';
+import { Location } from '@angular/common';
+import { Router } from '@angular/router';
+import { RouterLinkWithHref } from '@angular/router'
+
 
 describe('LogInComponent', () => {
   let component: LogInComponent;
@@ -50,5 +55,26 @@ describe('LogInComponent', () => {
     expect(component.dataUser.invalid).toBeFalse();
   });
   //Validar botón
+  it('Debe llamar al método submit', () => {
+   const btn = fixture.debugElement.query(By.css('.btnSubmit'))
+   const router = TestBed.inject(Router);
+   let location: Location;
+   btn.nativeElement.click()
+   const expectPath = '/chef-'
+  component.submit()
+  .then(()=>{
+    expect(location.path()).toBe(expectPath)
+  })
+  });
+  // it('Debe ir a la otra ruta', () => waitForAsync (() =>{
+  //   fixture.detectChanges();
+  //   let btnElement = fixture.debugElement.queryAll(By.css('.btnSubmit'))
+  //   btnElement[0].nativeElement.click()
+  //   fixture.whenStable().then(()=>{
+  //     const location: Location = TestBed.inject(Location);
+  //     expect(location.path()).toEqual('/take');
+  //   })
+  // }));
 
-});
+})
+
