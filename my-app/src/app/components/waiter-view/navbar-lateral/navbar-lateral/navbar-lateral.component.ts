@@ -18,9 +18,9 @@ export class NavbarLateralComponent implements OnInit {
 
   breakfast : boolean = false
 
-  filterProducts(){
-    this.breakfast = true
-  }
+  // filterProducts(){
+  //   this.breakfast = true
+  // }
 
   ngOnInit(): void {
   }

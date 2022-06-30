@@ -1,20 +1,23 @@
-<section class="containerOrder">
-    <div>
-        <p>variable del nombre del mesero</p>
-        <p> variable del id del mesero</p>
-        <input type="text">
+<div class="orderListContainer">
+    <div class="containerData">
+      <h4>Mesero:<input type="text" class="nameWaiter"></h4>
+      <h4>ID:<input type="text" class="numberId"></h4>
+      <h3>N° Mesa:<input type="text" class="numberTable"></h3> 
     </div>
-    <article>
-       <div>
-        caja donde van los productos
-        <img>+
-        <p> variable de cantidad </p>
-        <img>-        
-        <p> variable de precio </p>
-        <img> tacho de basura
-       <div *ngFor="let item of product">
-        <p>{{item.product}}</p> <p>{{item.cost}}</p>
-    </div>
-       </div>
-    </article>
-</section>
+    <table class="orderContainer" *ngFor="let item of product">
+      <tr>
+        <td>{{item.product}}</td>
+        <td><fa-icon class="faCirclePlus" [icon]="faCirclePlus"></fa-icon></td>
+        <td>-</td>
+        <td><fa-icon class="faCircleMinus" [icon]="faCircleMinus"></fa-icon></td>
+        <td>{{item.cost}}</td>
+        <td><fa-icon class="iconTrash" [icon]="faTrashCan"></fa-icon></td>
+      </tr>
+    </table>
+      <tr>
+        <td colspan="4">Total</td>
+        <td>variable de total</td>
+      </tr>
+
+    <button class="sendOrder">Enviar Orden</button>
+  </div>

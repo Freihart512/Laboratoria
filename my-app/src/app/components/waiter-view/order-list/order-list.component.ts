@@ -1,4 +1,5 @@
 import { Component, Input, OnInit } from '@angular/core';
+import { faCircleMinus, faCirclePlus, faTrashCan } from '@fortawesome/free-solid-svg-icons';
 
 @Component({
   selector: 'app-order-list',
@@ -6,6 +7,10 @@ import { Component, Input, OnInit } from '@angular/core';
   styleUrls: ['./order-list.component.css']
 })
 export class OrderListComponent implements OnInit {
+  faTrashCan = faTrashCan;
+  faCirclePlus = faCirclePlus;
+  faCircleMinus = faCircleMinus;
+  
   @Input() product : any[]
 
   constructor() { }
