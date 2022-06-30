@@ -1,0 +1,20 @@
+<section class="containerOrder">
+    <div>
+        <p>variable del nombre del mesero</p>
+        <p> variable del id del mesero</p>
+        <input type="text">
+    </div>
+    <article>
+       <div>
+        caja donde van los productos
+        <img>+
+        <p> variable de cantidad </p>
+        <img>-        
+        <p> variable de precio </p>
+        <img> tacho de basura
+       <div *ngFor="let item of product">
+        <p>{{item.product}}</p> <p>{{item.cost}}</p>
+    </div>
+       </div>
+    </article>
+</section>

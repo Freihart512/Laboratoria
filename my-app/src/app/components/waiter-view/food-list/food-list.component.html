@@ -1,7 +1,7 @@
 <section class="foodListContainer">
 <div class="containerAllCards">
     <div class="containerCards" *ngFor = "let item of menu">
-        <mat-card class="card">
+        <mat-card class="card" (click)="sendProduct(item.name , item.price)">
             <mat-card-title class="name">{{item.name}}</mat-card-title>
             <img mat-card-image src="{{item.img}}"  class="img">
             <mat-card-subtitle class="price"> ${{item.price}}</mat-card-subtitle>
@@ -9,3 +9,4 @@
     </div>
 </div>
 </section>
+<app-order-list [product]="product"></app-order-list>
