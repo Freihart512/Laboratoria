@@ -8,7 +8,7 @@
             </picture>
             <h1>Cicy's Burger</h1>
         </div>
-        <form (ngSubmit)="submit()"[formGroup]="dataUser">
+        <form (submit)="submit()"[formGroup]="dataUser">
             <mat-form-field appearance="fill">
                 <mat-label>Email</mat-label>
                 <input matInput formControlName="email">

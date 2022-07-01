@@ -27,13 +27,11 @@ export class LogInComponent implements OnInit {
   }
 
   submit() {
-    return this.firebase.login(this.dataUser.value.email, this.dataUser.value.password)
+     this.firebase.login(this.dataUser.value.email, this.dataUser.value.password)
       .then((data) => {
-        console.log(data)
         this.firestore.getUserRole(data.user.uid)
           .then((docResult) => {
             if (docResult['role'] === 'waiter') {
-              console.log('submit:¨entra si doResult.role es waiter');
               this.newRoute.navigate(['/take-orders']);
             } else if (docResult['role'] === 'chef') {
               this.newRoute.navigate(['/chef-view']);
@@ -42,7 +40,7 @@ export class LogInComponent implements OnInit {
       }).catch(() => {
         this.errRol();
       })
-
+      return false;
   }
   errRol() {
     this.snackBar.open('Contraseña o correo incorrecto. Ingresar nuevamente', 'Aceptar', {
