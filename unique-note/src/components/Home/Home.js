@@ -23,9 +23,9 @@ function Home() {
       className='Img-home' src={require('../../img/post5.png')}
       alt='Img newpostit'/>
       <div className='title-welcome1'>
-       <p1>Un bloc de notas a tu alcance <br/> 
+       <p>Un bloc de notas a tu alcance <br/> 
          ¡Toma nota ahora!
-      </p1>
+      </p>
       </div>
         <div className='content-btn'>
       <button onClick={btnforLog} type='submit' id='btnLog' className='button-components-h1'>Inicia Sesión </button>
